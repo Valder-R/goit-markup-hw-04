@@ -2,7 +2,6 @@ body {
 font-family: "Roboto", sans-serif;
 color: #434455;
 background-color: #fff;
-letter-spacing: 0.02em;
 font-size: 16px;
 line-height: 1.5;
 margin: 0;
@@ -71,6 +70,9 @@ a {
 
 .header {
     border-bottom: 1px solid #e7e9fc;
+    box-shadow: 0 1px 6px 0 rgba(46, 47, 66, 0.08), 
+    0 1px 1px 0 rgba(46, 47, 66, 0.16), 
+    0 2px 1px 0 rgba(46, 47, 66, 0.08);
 }
 
 .header-container {
@@ -88,6 +90,24 @@ a {
     color: #2e2f42;
     padding: 24px 0;
     display: block;
+    position: relative;
+    transition-property: color;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header .link.current {
+    color:#404bbf
+}
+
+.header .link.current::after {
+    content: "";
+    display: block;
+    width: 100%;
+    border-radius: 2px;
+    background: #404bbf;
+    height: 4px;
+    position: absolute;
+    bottom: 0;
 }
 
 .header-list {
@@ -115,6 +135,8 @@ a {
     color: inherit;
     padding: 24px 0;
     display: block;
+    transition-property: color;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contacts-link:hover,
@@ -126,6 +148,14 @@ a {
     background-color: #2e2f42;
     color: #fff;
     padding: 188px 0;
+    margin: 0 auto;
+    background-image: linear-gradient(to bottom,
+    rgba(46, 47, 66, 0.7),
+    rgba(46, 47, 66, 0.7)),
+     url('../images/people-office.jpg');
+    background-position: center;
+    background-size: cover;
+    max-width: 1440px;
 }
 
 .hero-title {
@@ -154,6 +184,9 @@ a {
     margin-left: auto;
     margin-right: auto;
     border: none;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
+    transition-property: background-color;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero-button:hover,
@@ -176,6 +209,18 @@ a {
 
 .benefits-item {
     width: calc((100% - 72px) / 4);
+}
+
+.benefits-iconbox{
+    border: 1px solid #8e8f99;
+    border-radius: 4px;
+    width: 100%;
+    padding: 24px;
+    background: #f4f4fd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .subtitle {
@@ -216,21 +261,46 @@ a {
     background-color: #fff;
     width: calc((100% - 72px) / 4);
     border-radius: 0 0 4px 4px;
+    box-shadow: 0 2px 1px 0 rgba(46, 47, 66, 0.08), 0 1px 1px 0 rgba(46, 47, 66, 0.16), 0 1px 6px 0 rgba(46, 47, 66, 0.08)
 }
-
-
 
 .team-content {
     padding: 32px 0px;
-}
 
-.team-item .subtitle{
-    margin-bottom: 8px;
 }
 
 .team-item .subtitle,
 .team-item .text{
     text-align: center;
+    margin-bottom: 8px;
+}
+
+.icon-list {
+    display: flex;
+    gap:24px;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-list .link {
+    width: 40px;
+    height: 40px;
+    background-color: #4d5ae5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition-property: background-color;
+    transition:250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-icon {
+    fill: #fff;
+}
+
+.icon-list .link:hover {
+    background-color: #404bbf;
+    cursor: pointer;
 }
 
 .portfolio-section .title {
@@ -245,6 +315,39 @@ a {
 
 .portfolio-item {
     width: calc((100% - 48px) / 3);
+    transition-property: box-shadow;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.overlay-box {
+    position: relative;
+    overflow: hidden;
+}
+
+.overlay {
+   position: absolute;
+   top: 0;
+   left: 0;
+   color:#f4f4fd;
+   letter-spacing: 0.02em;
+   width: 100%;
+   height: 100%;
+   background-color: #4d5ae5;
+   padding: 40px 32px;
+   transition-property: transform;
+   transform: translateY(100%);
+   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-item:hover {
+    box-shadow: 0 2px 1px 0 rgba(46, 47, 66, 0.08), 
+    0 1px 1px 0 rgba(46, 47, 66, 0.16), 
+    0 1px 6px 0 rgba(46, 47, 66, 0.08);
+    cursor: pointer;
+}
+
+.portfolio-item:hover .overlay {
+    transform: translateY(0);
 }
 
 .portfolio-content {
@@ -263,6 +366,11 @@ a {
     padding: 100px 0;
 }
 
+.footer .container{
+    display: flex;
+    gap: 120px;
+}
+
 .footer .logo {
     display: inline-block;
     margin-bottom: 16px;
@@ -271,4 +379,16 @@ a {
 .footer .text{
     color: #f4f4fd;
     max-width: 264px;
+}
+
+.footer .subtitle {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #fff;
+    display: block;
+    margin-bottom: 16px;
+}
+
+.footer-media .link:hover {
+    background-color: #31d0aa;
 }
